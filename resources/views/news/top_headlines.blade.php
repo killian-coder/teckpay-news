@@ -222,15 +222,17 @@
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
     <script type="text/javascript"></script>
+    {{-- Search --}}
     <script>
         document.getElementById('search-button').addEventListener('click', function() {
             const query = document.getElementById('search-input').value;
 
-            // Show the loader
+            // loader
             document.getElementById('loader').style.display = 'block';
 
-            // Add a delay before starting the search
+            // delay before starting the search
             setTimeout(() => {
                 fetch(`/search-news?q=${query}`)
                     .then(response => response.json())
@@ -288,12 +290,14 @@
             }, 1000);
         });
     </script>
+    {{-- Top Stories --}}
     <script>
         var topHeadlines = <?php echo json_encode($news); ?>;
 
         $(document).ready(function() {
             var $breakingNewsList = $('#breaking-news-list');
 
+            //only show 4 articles
             for (var i = 0; i < 4 && i < topHeadlines.articles.length; i++) {
                 var article = topHeadlines.articles[i];
                 var listItem = '<li class="nav-item">' +
